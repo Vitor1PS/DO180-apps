@@ -1,1 +1,40 @@
-atividade
+qtd_negativos = 0
+qtd_pares = 0
+qtd_intervalos = 0
+
+print("Digite os números. Para encerrar, digite 'fim'.\n")
+
+while True:
+    # Lê a entrada do usuário, remove espaços extras e converte para minúsculas
+    entrada = input("Digite um número: ").strip().lower()
+    
+    # Condição de parada
+    if entrada == 'fim':
+        break
+    
+    try:
+        # Converte a entrada para um número decimal (float)
+        numero = float(entrada)
+        
+        # 1. Verifica se é negativo
+        if numero < 0:
+            qtd_negativos += 1
+            
+        # 2. Verifica se é par (o resto da divisão por 2 deve ser zero)
+        if numero % 2 == 0:
+            qtd_pares += 1
+            
+        # 3. Verifica se está nos intervalos [10, 30] ou [50, 70]
+        if (10 <= numero <= 30) or (50 <= numero <= 70):
+            qtd_intervalos += 1
+            
+    except ValueError:
+        # Mensagem de erro caso o usuário digite texto inválido
+        print("Entrada inválida! Digite apenas números ou a palavra 'fim'.")
+
+# Exibição dos resultados finais
+print("\n" + "-"*20 + " RESULTADOS " + "-"*20)
+print(f"Quantidade de números negativos: {qtd_negativos}")
+print(f"Quantidade de números pares: {qtd_pares}")
+print(f"Quantidade de números entre [10 e 30] ou [50 e 70]: {qtd_intervalos}")
+print("-" * 52)
